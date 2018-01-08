@@ -3,20 +3,15 @@
 import Vue from 'vue';
 import App from './App';
 import router from './router';
-import store from './store';
-import MintUI from 'mint-ui';
-import 'mint-ui/lib/style.css';
 import Cube from 'cube-ui';
-
-import filters from './filters'; // 全局vue filter
-Object.keys(filters).forEach(key => {
-  Vue.filter(key, filters[key]);
-});
-Vue.use(Cube);
-Vue.use(MintUI);
+import store from './store/';
+import Mint from 'mint-ui';
+import 'common/js/index';
+import 'common/stylus/index.styl';
 Vue.config.productionTip = false;
 
-
+Vue.use(Cube);
+Vue.use(Mint);
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

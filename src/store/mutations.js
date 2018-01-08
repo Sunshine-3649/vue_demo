@@ -1,9 +1,22 @@
-import * as mutationTypes from './mutationTypes';
 
-function commitRootLevelMutation(state, payload) {
-  console.debug('触发了根级别的 Mutation, state =>', state, 'payload => ', payload);
-}
+const ADD_ITEMNUM = 'ADD_ITEMNUM';
+const INIT_ITEMNUM = 'INIT_ITEMNUM';
+const ADD_ANSWER_ID = 'ADD_ANSWER_ID';
 
 export default {
-  commitRootLevelMutation
+  [ADD_ITEMNUM](state, num) {
+    state.itemNum += num;
+  },
+  [INIT_ITEMNUM](state, num) {
+    state.itemNum = 0;
+    state.answerid = [];
+    state.itemDetail.forEach(item => {
+      item.topic_answer.forEach(itemsub => {
+        itemsub.is_standard_answer = 0;
+      });
+    });
+  },
+  [ADD_ANSWER_ID](state, id) {
+    state.answerid.push(id);
+  }
 };
